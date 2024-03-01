@@ -52,7 +52,7 @@ class Array_Seq:
     def insert_first(self,value): self.insert_at(0,value)
     def insert_last(self,value): self.insert_at(len(self),value)
     def delete_first(self): return self.delete_at(0)
-    def delete_last(self) : return self.delete_at(len(self))
+    def delete_last(self) : return self.delete_at(len(self) -1)
     
 
 
