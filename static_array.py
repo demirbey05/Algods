@@ -10,10 +10,14 @@ class Array_Seq:
     def __iter__(self):
         yield from self.container
 
-    def __getitem__(self, index):   
+    def __getitem__(self, index):
+        if index >= self.length or index < 0:
+            raise ValueError("out of bound")   
         return self.container[index]
     
     def __setitem__(self, index, value):
+        if index >= self.length or index < 0:
+            raise ValueError("out of bound")
         self.container[index] = value
 
     def build(self, A):
@@ -30,6 +34,14 @@ class Array_Seq:
 
         for i in range(elems):
             A[move_location+i] = self.container[start_location+i]
+
+    def _copy_backward(self,start_location,elems,A,move_location):
+        if start_location + elems > self.length:
+            raise ValueError("Out of range")
+        elif move_location + elems > len(A):
+            raise ValueError("Out of range")
+        for i in range(elems - 1, -1 ,-1):
+           A[move_location + i] = self.container[start_location + i]
 
     def insert_at(self,index,value):
 
