@@ -1,6 +1,3 @@
-
-
-
 def merge(A,L,R,i,j,p,q):
     # Merge L[:i] and R[:j] to A[p:q]
     if p < q :
