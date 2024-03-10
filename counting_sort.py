@@ -1,14 +1,4 @@
-class Element:
-    def __init__(self,key,value):
-        self.key = key
-        self.value = value
-
-    def __str__(self):
-        return f'({self.key},{self.value})'
-
-    def __repr__(self):
-        return f'({self.key},{self.value})'
-
+from element import Element
 def counting_sort(A):
     keys = [i.key for i in A]
     u = max(keys) + 1

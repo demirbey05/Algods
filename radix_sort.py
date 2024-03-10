@@ -1,4 +1,5 @@
-from counting_sort import Element,counting_sort
+from counting_sort import counting_sort
+from element import Element
 
 def radix_sort(A):
     n = len(A)

@@ -20,9 +20,10 @@ class LinkedList:
     def __iter__(self):
         node = self.head
         while node:
-            yield node.item
+            yield node.value
             node = node.next
-
+    def __str__(self):
+        return f'{list(self)}'
     def insert_first(self,x):
         node = LinkedListNode(x)
         node.init_next(self.head)
@@ -38,18 +39,18 @@ class LinkedList:
     def get_at(self,i):
         if self.length == 0 or i < 0:
             raise ValueError("out of bounds") 
-        return self.head.later_node(i).item
+        return self.head.later_node(i).value
     
     def set_at(self,i,x):
         if self.length == 0 or i < 0 : 
             raise ValueError("out of bounds")
         node = self.head.later_node(i)
-        node.item = x
+        node.value = x
 
     def delete_first(self):
         if self.length == 0:
             return None
-        x = self.head.item
+        x = self.head.value
         self.head = self.head.next
         self.length -= 1
         return x
@@ -58,11 +59,10 @@ class LinkedList:
         if i==0 :
             self.insert_first(x)
             return
-        
-        if i >= len(self):
+        elif i > len(self):
             raise ValueError("out of bounds")
 
-        new_node = LinkedList(x)
+        new_node = LinkedListNode(x)
         prev = self.head.later_node(i-1)
         prev_next = prev.next
         prev.next  = new_node
@@ -73,7 +73,7 @@ class LinkedList:
         if i == 0:
             return self.delete_first()
         node = self.head.later_node(i-1)
-        x = node.next.item
+        x = node.next.value
         node.next = node.next.next
         self.length -= 1
         return x
